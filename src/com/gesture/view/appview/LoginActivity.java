@@ -1,5 +1,9 @@
 package com.gesture.view.appview;
 
+import java.util.ArrayList;
+
+import org.apache.http.auth.UsernamePasswordCredentials;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +20,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.gesture.R;
+import com.gesture.criterias.UserCriterias;
+import com.gesture.criterias.base.Criteria.Type;
+import com.gesture.criterias.base.CriteriasBase.GroupType;
+import com.gesture.data.UserSQLiteAdapter;
 import com.gesture.entity.User;
+import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
 
 /**
@@ -57,6 +66,15 @@ public class LoginActivity extends Activity {
 						.getText().toString());
 				userForInstance.setPassword(((EditText) findViewById(R.id.pwd))
 						.getText().toString());
+
+				UserCriterias crit = new UserCriterias(GroupType.AND);
+				crit.add(UserSQLiteAdapter.COL_LOGIN, userForInstance.getLogin());
+				crit.add(UserSQLiteAdapter.COL_PASSWORD, userForInstance.getPassword(), Type.EQUALS);
+				
+				/* Récupère les users ayant le login mp précisé */
+				ArrayList<User> users = new UserProviderUtils(monContext).query(crit);
+				if (!users.isEmpty())
+					userForInstance = users.get(0);
 
 				SharedPreferences prefs = PreferenceManager
 						.getDefaultSharedPreferences(LoginActivity.this);
