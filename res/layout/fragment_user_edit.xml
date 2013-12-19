@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:harmony="http://schemas.android.com/apk/res/com.gesture"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   <TextView
+    	android:id="@+id/user_login_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/user_login_label"/>
+    <EditText
+		android:id="@+id/user_login"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="text"
+		android:layout_below="@+id/user_login_label" />
+   <TextView
+    	android:id="@+id/user_password_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/user_login"
+	    android:text="@string/user_password_label"/>
+    <EditText
+		android:id="@+id/user_password"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="textPassword"
+		android:layout_below="@+id/user_password_label" />
+</RelativeLayout>

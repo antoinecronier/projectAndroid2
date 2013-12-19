@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/logtraca_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/logtraca_produit_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/logtraca_produit_label"/>
+			<TextView
+				android:id="@+id/logtraca_produit"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_produit_label" />
+			<TextView
+				android:id="@+id/logtraca_machine_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/logtraca_produit"
+				android:text="@string/logtraca_machine_label"/>
+			<TextView
+				android:id="@+id/logtraca_machine"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_machine_label" />
+			<TextView
+				android:id="@+id/logtraca_user_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/logtraca_machine"
+				android:text="@string/logtraca_user_label"/>
+			<TextView
+				android:id="@+id/logtraca_user"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_user_label" />
+			<TextView
+				android:id="@+id/logtraca_duree_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/logtraca_user"
+				android:text="@string/logtraca_duree_label"/>
+			<TextView
+				android:id="@+id/logtraca_duree"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_duree_label" />
+			<TextView
+				android:id="@+id/logtraca_dateentre_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/logtraca_duree"
+				android:text="@string/logtraca_dateentre_label"/>
+			<TextView
+				android:id="@+id/logtraca_dateentre"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_dateentre_label" />
+			<TextView
+				android:id="@+id/logtraca_datesortie_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/logtraca_dateentre"
+				android:text="@string/logtraca_datesortie_label"/>
+			<TextView
+				android:id="@+id/logtraca_datesortie"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/logtraca_datesortie_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/logtraca_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/logtraca_not_found" />
+</RelativeLayout>

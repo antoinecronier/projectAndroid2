@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.gesture"
+	android:versionCode="1"
+	android:versionName="@string/app_version">
+	<uses-sdk
+		android:minSdkVersion="7"
+		android:targetSdkVersion="19" />
+	<application
+		android:label="@string/app_name"
+		android:name="com.gesture.WindowsGesture2Application"
+		android:allowBackup="true"
+		android:theme="@style/PinnedTheme">
+		<activity
+			android:name="com.gesture.HomeActivity"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.client.ClientCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Client" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.client.ClientEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Client" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.client.ClientShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Client" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.client.ClientListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.Client" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.produit.ProduitCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Produit" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.produit.ProduitEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Produit" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.produit.ProduitShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Produit" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.produit.ProduitListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.Produit" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.commande.CommandeCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Commande" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.commande.CommandeEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Commande" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.commande.CommandeShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Commande" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.commande.CommandeListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.Commande" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.machine.MachineCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Machine" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.machine.MachineEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Machine" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.machine.MachineShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Machine" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.machine.MachineListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.Machine" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.user.UserCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.User" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.user.UserEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.User" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.user.UserShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.User" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.user.UserListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.User" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.logtraca.LogTracaCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.LogTraca" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.logtraca.LogTracaEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.LogTraca" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.logtraca.LogTracaShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.LogTraca" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.logtraca.LogTracaListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.LogTraca" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.zone.ZoneCreateActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Zone" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.zone.ZoneEditActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Zone" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.zone.ZoneShowActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/com.gesture.Zone" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".view.zone.ZoneListActivity"
+			android:label="@string/app_name"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.collection/com.gesture.Zone" />
+			</intent-filter>
+		</activity>
+		<provider
+			android:name="com.gesture.provider.WindowsGesture2Provider"
+			android:authorities="com.gesture.provider"
+			android:label="@string/app_provider_name"
+			android:description="@string/app_provider_description" />
+	</application>
+	<uses-permission android:name="android.permission.GET_TASKS" />
+</manifest>

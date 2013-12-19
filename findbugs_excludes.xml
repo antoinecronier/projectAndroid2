@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="~.*\.R\$.*"/>
+  </Match>
+  <Match>
+    <Or>
+    <Package name="~gesture[.]criterias[.]base([.].*)?" />
+    <Package name="~gesture[.]data[.]base([.].*)?" />
+    <Package name="~gesture[.]harmony([.].*)?" />
+    <Package name="~gesture[.]provider[.]base([.].*)?" />
+    <Package name="~gesture[.]provider[.]utils[.]base([.].*)?" />
+    <Class name="~gesture[.]WindowsGesture2ApplicationBase.java"/>
+    </Or>
+  </Match>
+</FindBugsFilter>

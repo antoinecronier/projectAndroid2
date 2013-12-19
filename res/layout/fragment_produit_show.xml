@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/produit_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/produit_type_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/produit_type_label"/>
+			<TextView
+				android:id="@+id/produit_type"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_type_label" />
+			<TextView
+				android:id="@+id/produit_etat_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/produit_type"
+				android:text="@string/produit_etat_label"/>
+			<TextView
+				android:id="@+id/produit_etat"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_etat_label" />
+			<TextView
+				android:id="@+id/produit_materiel_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/produit_etat"
+				android:text="@string/produit_materiel_label"/>
+			<TextView
+				android:id="@+id/produit_materiel"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_materiel_label" />
+			<TextView
+				android:id="@+id/produit_commande_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/produit_materiel"
+				android:text="@string/produit_commande_label"/>
+			<TextView
+				android:id="@+id/produit_commande"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_commande_label" />
+			<TextView
+				android:id="@+id/produit_quantite_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/produit_commande"
+				android:text="@string/produit_quantite_label"/>
+			<TextView
+				android:id="@+id/produit_quantite"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_quantite_label" />
+			<TextView
+				android:id="@+id/produit_avancement_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/produit_quantite"
+				android:text="@string/produit_avancement_label"/>
+			<TextView
+				android:id="@+id/produit_avancement"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/produit_avancement_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/produit_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/produit_not_found" />
+</RelativeLayout>

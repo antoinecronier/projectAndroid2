@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/client_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/client_nom_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/client_nom_label"/>
+			<TextView
+				android:id="@+id/client_nom"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/client_nom_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/client_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/client_not_found" />
+</RelativeLayout>

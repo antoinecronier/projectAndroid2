@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="2.5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="2.5dp" >
+	    <TextView
+			android:id="@+id/row_commande_client"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true" />
+	    <TextView
+			android:id="@+id/row_commande_datecreation"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_below="@+id/row_commande_client" />
+	    <TextView
+			android:id="@+id/row_commande_datefin"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_below="@+id/row_commande_datecreation" />
+	    <TextView
+			android:id="@+id/row_commande_datelivraison"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_below="@+id/row_commande_datefin" />
+	    <TextView
+			android:id="@+id/row_commande_avancement"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_below="@+id/row_commande_datelivraison" />
+
+</RelativeLayout>
