@@ -18,6 +18,8 @@ import com.gesture.data.UserSQLiteAdapter;
 
 import com.gesture.entity.User;
 
+import com.gesture.fixture.UserDataLoader;
+import com.gesture.fixture.UserDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class UserTestProviderBase extends TestDBBase {
 
 		this.adapter = new UserSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<User>(UserDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += UserDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

@@ -18,6 +18,8 @@ import com.gesture.data.ClientSQLiteAdapter;
 
 import com.gesture.entity.Client;
 
+import com.gesture.fixture.ClientDataLoader;
+import com.gesture.fixture.ClientDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class ClientTestProviderBase extends TestDBBase {
 
 		this.adapter = new ClientSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<Client>(ClientDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += ClientDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

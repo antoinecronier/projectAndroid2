@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.ClientSQLiteAdapter;
 import com.gesture.entity.Client;
 
+import com.gesture.fixture.ClientDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class ClientTestDBBase extends TestDBBase {
 		this.adapter = new ClientSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<Client> entities = new ArrayList<Client>(ClientDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

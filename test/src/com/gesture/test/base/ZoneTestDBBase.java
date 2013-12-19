@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.ZoneSQLiteAdapter;
 import com.gesture.entity.Zone;
 
+import com.gesture.fixture.ZoneDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class ZoneTestDBBase extends TestDBBase {
 		this.adapter = new ZoneSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<Zone> entities = new ArrayList<Zone>(ZoneDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

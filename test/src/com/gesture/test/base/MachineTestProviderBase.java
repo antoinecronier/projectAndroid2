@@ -18,6 +18,8 @@ import com.gesture.data.MachineSQLiteAdapter;
 
 import com.gesture.entity.Machine;
 
+import com.gesture.fixture.MachineDataLoader;
+import com.gesture.fixture.MachineDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class MachineTestProviderBase extends TestDBBase {
 
 		this.adapter = new MachineSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<Machine>(MachineDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += MachineDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

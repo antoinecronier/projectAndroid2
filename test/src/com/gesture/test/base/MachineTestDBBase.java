@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.MachineSQLiteAdapter;
 import com.gesture.entity.Machine;
 
+import com.gesture.fixture.MachineDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class MachineTestDBBase extends TestDBBase {
 		this.adapter = new MachineSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<Machine> entities = new ArrayList<Machine>(MachineDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

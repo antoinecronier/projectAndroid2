@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.ProduitSQLiteAdapter;
 import com.gesture.entity.Produit;
 
+import com.gesture.fixture.ProduitDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class ProduitTestDBBase extends TestDBBase {
 		this.adapter = new ProduitSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<Produit> entities = new ArrayList<Produit>(ProduitDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

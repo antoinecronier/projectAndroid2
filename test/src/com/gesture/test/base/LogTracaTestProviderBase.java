@@ -18,6 +18,8 @@ import com.gesture.data.LogTracaSQLiteAdapter;
 
 import com.gesture.entity.LogTraca;
 
+import com.gesture.fixture.LogTracaDataLoader;
+import com.gesture.fixture.LogTracaDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class LogTracaTestProviderBase extends TestDBBase {
 
 		this.adapter = new LogTracaSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<LogTraca>(LogTracaDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += LogTracaDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

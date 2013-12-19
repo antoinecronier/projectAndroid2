@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.CommandeSQLiteAdapter;
 import com.gesture.entity.Commande;
 
+import com.gesture.fixture.CommandeDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class CommandeTestDBBase extends TestDBBase {
 		this.adapter = new CommandeSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<Commande> entities = new ArrayList<Commande>(CommandeDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

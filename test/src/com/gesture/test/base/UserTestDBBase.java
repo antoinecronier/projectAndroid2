@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.UserSQLiteAdapter;
 import com.gesture.entity.User;
 
+import com.gesture.fixture.UserDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class UserTestDBBase extends TestDBBase {
 		this.adapter = new UserSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<User> entities = new ArrayList<User>(UserDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)

@@ -18,6 +18,8 @@ import com.gesture.data.ProduitSQLiteAdapter;
 
 import com.gesture.entity.Produit;
 
+import com.gesture.fixture.ProduitDataLoader;
+import com.gesture.fixture.ProduitDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class ProduitTestProviderBase extends TestDBBase {
 
 		this.adapter = new ProduitSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<Produit>(ProduitDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += ProduitDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

@@ -18,6 +18,8 @@ import com.gesture.data.CommandeSQLiteAdapter;
 
 import com.gesture.entity.Commande;
 
+import com.gesture.fixture.CommandeDataLoader;
+import com.gesture.fixture.CommandeDataLoader;
 
 import java.util.ArrayList;
 import com.gesture.test.utils.*;
@@ -56,6 +58,12 @@ public abstract class CommandeTestProviderBase extends TestDBBase {
 
 		this.adapter = new CommandeSQLiteAdapter(this.ctx);
 
+		this.entities = new ArrayList<Commande>(CommandeDataLoader.getInstance(this.ctx).getMap().values());
+		if (this.entities.size()>0) {
+			this.entity = this.entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
+
+		this.nbEntities += CommandeDataLoader.getInstance(this.ctx).getMap().size();
 		this.provider = this.getMockContext().getContentResolver();
 	}
 

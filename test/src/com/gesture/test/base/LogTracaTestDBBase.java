@@ -15,6 +15,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.gesture.data.LogTracaSQLiteAdapter;
 import com.gesture.entity.LogTraca;
 
+import com.gesture.fixture.LogTracaDataLoader;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,10 @@ public abstract class LogTracaTestDBBase extends TestDBBase {
 		this.adapter = new LogTracaSQLiteAdapter(this.ctx);
 		this.adapter.open();
 
+		ArrayList<LogTraca> entities = new ArrayList<LogTraca>(LogTracaDataLoader.getInstance(this.ctx).getMap().values());
+		if (entities.size()>0){
+			this.entity = entities.get(TestUtils.generateRandomInt(0,entities.size()-1));
+		}
 	}
 
 	/* (non-Javadoc)
