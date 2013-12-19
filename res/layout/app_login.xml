@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConnexionActivity" >
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="@string/connexion"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/darkred" />
+    
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pwdlabel"
+        android:layout_alignLeft="@+id/login"
+        android:ems="10"
+        android:hint="@string/pwd" />
+
+    <TextView
+        android:id="@+id/pwdlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="17dp"
+        android:text="@string/pwd" />
+
+    <TextView
+        android:id="@+id/loginlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pwdlabel"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="162dp"
+        android:text="@string/login" />
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/loginlabel"
+        android:layout_toRightOf="@+id/pwdlabel"
+        android:ems="10"
+        android:hint="@string/login" />
+
+    <Button
+        android:id="@+id/btnConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="@string/connexion" />
+    
+</RelativeLayout>

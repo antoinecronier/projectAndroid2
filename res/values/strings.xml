@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+    <!-- App Strings -->
+    <string name="app_name">WindowsGesture</string>
+    <string name="action_settings">Settings</string>
+    <string name="connexion">Connexion</string>
+    <string name="login">Identifiant</string>
+    <string name="pwd">Mot de passe</string>
+    <string name="desc_img_deco">déconnexion</string>
+    <string name="choix_zone">Choisir la zone</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="zone">Zone  :</string>
+    <string name="produit">Produit :</string>
+    <string name="statut">Statut :</string>
+    <string name="commande">Commande :</string>
+    <string name="lblquantite">Quantité : </string>
+    <string name="accueil_admin_qualite">Qualité</string>
+    <string name="creer_commande">Création commande</string>
+    <string name="verif_defaut">Vérification mise en rebut</string>
+    <string name="num_piece">N° pièce </string>
+    <string name="com_defaut">Commentaires </string>
+    <string name="defaut">Défaut constaté </string>
+    <string name="client">Client </string>
+    <string name="produit_cmd">Produit </string>
+    <string name="matiere">Matière </string>
+    <string name="quantite">Quantité </string>
+    <string name="param_traca">Paramètrage traçabilité </string>
+    <string name="liste_commande">Liste commandes </string>
+    <string name="detail_commande">Détails commande </string>
+    <string name="accueil_logi">Gestion ligne de production </string>
+    <string name="role">Rôle </string>
+    <string name="nom_zone">Nom zone </string>
+    <string name="nom_machine">Nom machine </string>
+
+    <!-- App Strings boutons -->
+    <string name="btn_zone_facon">Façonnage</string>
+    <string name="btn_zone_decoup">Découpage</string>
+    <string name="btn_zone_peint">Peinture</string>
+    <string name="btn_zone_ass">Assemblage</string>
+    <string name="btn_start_pdt">Start</string>
+    <string name="btn_stop_pdt">Stop</string>
+    <string name="btn_next_pdt">Produit suivant</string>
+    <string name="btn_rebut_pdt">Mettre au rebut</string>
+    <string name="btn_change_zone">Changer de zone</string>
+    <string name="btn_create_cmd">Création commande</string>
+    <string name="btn_check_qualite">Vérifier mises en rebut</string>
+    <string name="btn_traca">Traçabilité</string>
+    <string name="btn_liste_cmd">Commandes à venir</string>
+    <string name="btn_cmd_encours">Commandes en cours</string>
+    <string name="btn_val_rebut">Valider rebut</string>
+    <string name="btn_remise_rebut">Remettre dans le circuit</string>
+    <string name="btn_val_cmd">Valider commande et paramètrer traçabilité
+    </string>
+    <string name="btn_retour_liste">Retour liste</string>
+    <string name="btn_del_cmd">Supprimer commande</string>
+    <string name="btn_ajout_user">Ajout utilisateur</string>
+    <string name="btn_ajout_zone">Ajout zone</string>
+    <string name="btn_ajout_machine">Ajout machine</string>
+    <string name="btn_val">Valider</string>
+
+    <!-- App Colors -->
+    <color name="darkred">#780909</color>
+    <color name="btn_red">#F74242</color>
+    <color name="btn_green">#17A843</color>
+
+    <!-- App Titres activity -->
+    <string name="title_activity_accueil_qualite">
+        AccueilQualiteActivity
+    </string>
+    <string name="title_activity_creer_commande">CreerCommandeActivity</string>
+    <string name="title_activity_gestion_piece">GestionPieceActivity</string>
+    <string name="title_activity_choix_zone">ChoixZoneActivity</string>
+    <string name="title_activity_check_rebut">CheckRebutActivity</string>
+    <string name="title_activity_param_traca">ParamTracaActivity</string>
+    <string name="title_activity_list_commande">ListCommandeActivity</string>
+    <string name="title_activity_detail_commande">
+        DetailCommandeActivity
+    </string>
+    <string name="title_activity_accueil_logiciel">
+        AccueilLogicielActivity
+    </string>
+    <string name="title_activity_add_user">AddUserActivity</string>
+    <string name="title_activity_add_zone">AddZoneActivity</string>
+    <string name="title_activity_add_machine">AddMachineActivity</string>
+    
 	<string name="app_provider_description">Provider of WindowsGesture2 to access data</string>
 	<string name="app_provider_name">Provider of WindowsGesture2</string>
 	<string name="common_create">Create</string>
