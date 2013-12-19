@@ -14,7 +14,7 @@
 		
 	    <!-- Project activities -->
 	    <activity
-            android:name="com.antoineanais.windowsgesture.activities.LoginActivity"
+            android:name=".view.appview.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,51 +23,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AccueilUserActivity"
+            android:name=".view.appview.AccueilUserActivity"
             android:label="@string/title_activity_choix_zone" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.GestionPieceActivity"
+            android:name=".view.appview.GestionPieceActivity"
             android:label="@string/title_activity_gestion_piece" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AccueilQualiteActivity"
+            android:name=".view.appview.AccueilQualiteActivity"
             android:label="@string/title_activity_accueil_qualite" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.CreerCommandeActivity"
+            android:name=".view.appview.CreerCommandeActivity"
             android:label="@string/title_activity_creer_commande" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.CheckRebutActivity"
+            android:name=".view.appview.CheckRebutActivity"
             android:label="@string/title_activity_check_rebut" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.ParamTracaActivity"
+            android:name=".view.appview.ParamTracaActivity"
             android:label="@string/title_activity_param_traca" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.ListCommandeActivity"
+            android:name=".view.appview.ListCommandeActivity"
             android:label="@string/title_activity_list_commande" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.DetailCommandeActivity"
+            android:name=".view.appview.DetailCommandeActivity"
             android:label="@string/title_activity_detail_commande" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AccueilLogicielActivity"
+            android:name=".view.appview.AccueilLogicielActivity"
             android:label="@string/title_activity_accueil_logiciel" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AddUserActivity"
+            android:name=".view.appview.AddUserActivity"
             android:label="@string/title_activity_add_user" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AddZoneActivity"
+            android:name=".view.appview.AddZoneActivity"
             android:label="@string/title_activity_add_zone" >
         </activity>
         <activity
-            android:name="com.antoineanais.windowsgesture.activities.AddMachineActivity"
+            android:name=".view.appview.AddMachineActivity"
             android:label="@string/title_activity_add_machine" >
         </activity>
         
@@ -75,10 +75,6 @@
 		<activity
 			android:name="com.gesture.HomeActivity"
 			android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
 		</activity>
 		<activity
 			android:name=".view.client.ClientCreateActivity"

@@ -9,12 +9,20 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 
 import com.gesture.R;
 import com.gesture.entity.User;
 import com.gesture.view.appcode.Constantes;
+import com.google.android.pinnedheader.headerlist.PinnedHeaderListView;
 
+/**
+ * Interface utilisateur pour la sélection de la zone de travail
+ * @author alexandre
+ *
+ */
 public class AccueilUserActivity extends Activity {
 
 	Context monContext;
@@ -54,6 +62,17 @@ public class AccueilUserActivity extends Activity {
 						.finishActivity(Constantes.ACCUEIL_USER_ACTIVITY);
 			}
 		});
+		
+		PinnedHeaderListView listView = (PinnedHeaderListView) this.findViewById(R.id.zoneListContainer);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+		})
 	}
 
 	@Override
