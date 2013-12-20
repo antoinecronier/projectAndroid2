@@ -43,7 +43,7 @@ import com.gesture.provider.utils.CommandeProviderUtils;
 public class LogTracaProviderAdapter
 					extends LogTracaProviderAdapterBase {
 	
-	/** LOGTRACA_USER. */
+	/** LOGTRACA_COMMANDE. */
 	protected static final int PRODUIT_COMMANDE =
 			2068130946;
 	
@@ -116,8 +116,8 @@ public class LogTracaProviderAdapter
 
 		switch (matchedUri) {
 			case PRODUIT_COMMANDE:
-				result = this.method1(uri);
-				//result = this.method2(uri);
+				//result = this.method1(uri);
+				result = this.method2(uri);
 				//result = this.method3(uri);
 				break;
 

@@ -13,9 +13,13 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.DateTimePrinter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
@@ -24,6 +28,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -45,6 +50,7 @@ import com.gesture.entity.Machine;
 import com.gesture.entity.Produit;
 import com.gesture.entity.User;
 import com.gesture.entity.Zone;
+import com.gesture.provider.LogTracaProviderAdapter;
 import com.gesture.provider.utils.CommandeProviderUtils;
 import com.gesture.provider.utils.LogTracaProviderUtils;
 import com.gesture.provider.utils.UserProviderUtils;
@@ -97,35 +103,75 @@ public class GestionPieceActivity extends Activity {
 		/* Récupère les commandes étant en progression */
 		ArrayList<Commande> commandes = new CommandeProviderUtils(monContext)
 				.query(critCommande);
+
 		if (!commandes.isEmpty()) {
 			currentCommande = commandes.get(0);
+
 			ArrayList<Produit> produits = new CommandeProviderUtils(monContext)
 					.getAssociateProduits(currentCommande);
 
 			/* Check log exist if not create */
-			LogTracaCriterias critLogTraca = new LogTracaCriterias(
-					GroupType.AND);
-			critCommande.add(LogTracaSQLiteAdapter.COL_MACHINE,
-					String.valueOf(currentMachine.getId_machine()));
-			critCommande.add(LogTracaSQLiteAdapter.COL_PRODUIT,
-					String.valueOf(currentProduit.getId_produit()));
-			// TODO inner-joint
-			critCommande.add(ProduitSQLiteAdapter.COL_COMMANDE,
-					String.valueOf(currentCommande.getId_cmd()));
+			/*
+			 * getPathSegments().get(1) check # we have to remplace by commande
+			 * ID
+			 */
+			Uri idCommande = null;
+			idCommande.encode(String
+					.valueOf(LogTracaProviderAdapter.LOGTRACA_URI + "/"
+							+ currentCommande.getId_cmd()
+							+ "/produitOnCommande"));
+			Cursor monCu = new LogTracaProviderAdapter(monContext).query(
+					idCommande, null, null, null, null);
 
-			ArrayList<LogTraca> logsTraca = new LogTracaProviderUtils(
-					monContext).query(critLogTraca);
-
-			if (!logsTraca.isEmpty()) {
-				currentLog = logsTraca.get(0);
-			} else {
+			/* Set currentLog if have it */
+			if (monCu != null) {
+				currentLog.setDateEntre(monCu.getString(monCu
+						.getColumnIndex(LogTracaSQLiteAdapter.COL_DATEENTRE)));
+				currentLog.setDateSortie(monCu.getString(monCu
+						.getColumnIndex(LogTracaSQLiteAdapter.COL_DATESORTIE)));
+				currentLog.setDuree(monCu.getString(monCu
+						.getColumnIndex(LogTracaSQLiteAdapter.COL_DUREE)));
+				currentLog.setId_log(monCu.getInt(monCu
+						.getColumnIndex(LogTracaSQLiteAdapter.COL_ID_LOG)));
+				currentLog
+						.getMachine()
+						.setId_machine(
+								monCu.getInt(monCu
+										.getColumnIndex(LogTracaSQLiteAdapter.COL_MACHINE)));
+				currentLog
+						.getProduit()
+						.setId_produit(
+								monCu.getInt(monCu
+										.getColumnIndex(LogTracaSQLiteAdapter.COL_PRODUIT)));
+				currentLog
+						.getUser()
+						.setId_user(
+								monCu.getInt(monCu
+										.getColumnIndex(LogTracaSQLiteAdapter.COL_USER)));
+			}else {
 				currentLog.setDateEntre(DateTime.now().toString());
 				currentLog.setMachine(currentMachine);
 				currentLog.setProduit(currentProduit);
 				currentLog.setUser(userForInstance);
 
-				//LogTracaProviderUtils logTracaProvider = navigateUpTo(upIntent)
 				/* Show box to enter duration */
+				AlertDialog.Builder builder = new Builder(monContext);
+				final EditText text = new EditText(monContext);
+
+				builder.setTitle("Entrer delais de conception").setMessage("Name this new profile").setView(text);
+//				builder.setPositiveButton("Create", new OnClickListener() {
+//
+//				    public void onClick(DialogInterface di, int i) {
+//				        final String name = text.getText().toString();
+//				        //do something with it
+//				    }
+//				});
+//				builder.setNegativeButton("Cancel", new OnClickListener() {
+//
+//				    public void onClick(DialogInterface di, int i) {
+//				    }
+//				});
+				builder.create().show();
 			}
 		}
 
