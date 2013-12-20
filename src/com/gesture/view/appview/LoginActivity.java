@@ -30,7 +30,7 @@ import com.gesture.view.appcode.Constantes;
 
 /**
  * <br>
- * Ecran utiliser pour logger l'utilisateur par leur role. </br> <br>
+ * Ecran utilisé pour logger l'utilisateur par leur role. </br> <br>
  * Si le role est égale à 0 l'utilisateur ne sera pas redirigé vers une autre
  * page. </br> <br>
  * Si le role est égale à 1 l'utilisateur est définit comme étant un opérateur.
@@ -46,7 +46,7 @@ import com.gesture.view.appcode.Constantes;
 public class LoginActivity extends Activity {
 
 	Context monContext;
-	User userForInstance;
+	User userForInstance = new User();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +60,21 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-
 				/* Remplit l'utilisateur pour le logger */
-				userForInstance.setLogin(((EditText) findViewById(R.id.login))
-						.getText().toString());
-				userForInstance.setPassword(((EditText) findViewById(R.id.pwd))
-						.getText().toString());
+				userForInstance.setLogin(((EditText) LoginActivity.this
+						.findViewById(R.id.login)).getText().toString());
+				userForInstance.setPassword(((EditText) LoginActivity.this
+						.findViewById(R.id.pwd)).getText().toString());
 
 				UserCriterias crit = new UserCriterias(GroupType.AND);
-				crit.add(UserSQLiteAdapter.COL_LOGIN, userForInstance.getLogin());
-				crit.add(UserSQLiteAdapter.COL_PASSWORD, userForInstance.getPassword(), Type.EQUALS);
-				
+				crit.add(UserSQLiteAdapter.COL_LOGIN,
+						userForInstance.getLogin());
+				crit.add(UserSQLiteAdapter.COL_PASSWORD,
+						userForInstance.getPassword(), Type.EQUALS);
+
 				/* Récupère les users ayant le login mp précisé */
-				ArrayList<User> users = new UserProviderUtils(monContext).query(crit);
+				ArrayList<User> users = new UserProviderUtils(monContext)
+						.queryAll();
 				if (!users.isEmpty())
 					userForInstance = users.get(0);
 
