@@ -363,4 +363,5 @@
 			android:description="@string/app_provider_description" />
 	</application>
 	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 </manifest>
