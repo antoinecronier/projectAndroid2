@@ -23,6 +23,6 @@ public class WindowsGesture2Application extends WindowsGesture2ApplicationBase {
 	/**
 	 * DEBUG.
 	 */
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = BuildConfig.DEBUG;
 
 }
