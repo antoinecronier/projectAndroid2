@@ -1,9 +1,9 @@
 Zone:
     Zone_name1:
-        nom:"Découpage"
+        nom: "Découpage"
     Zone_name2:
-        nom:"Façonnage"
+        nom: "Façonnage"
     Zone_name3:
-        nom:"Peinture"
+        nom: "Peinture"
     Zone_name4:
-        nom:"Assemblage"
+        nom: "Assemblage"

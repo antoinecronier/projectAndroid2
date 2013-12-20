@@ -27,6 +27,7 @@ import com.gesture.data.UserSQLiteAdapter;
 import com.gesture.entity.User;
 import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
+import com.gesture.view.zone.ZoneListActivity;
 
 /**
  * <br>
@@ -74,7 +75,7 @@ public class LoginActivity extends Activity {
 
 				/* Récupère les users ayant le login mp précisé */
 				ArrayList<User> users = new UserProviderUtils(monContext)
-						.queryAll();
+						.query(crit);
 				if (!users.isEmpty())
 					userForInstance = users.get(0);
 
@@ -120,7 +121,7 @@ public class LoginActivity extends Activity {
 
 					case 1:
 						Intent monIntent1 = new Intent(LoginActivity.this,
-								AccueilUserActivity.class);
+								ZoneListActivity.class);
 						monIntent1.putExtra("CurrentUser",
 								(Parcelable) userForInstance);
 						LoginActivity.this.startActivityForResult(monIntent1,

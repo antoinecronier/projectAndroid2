@@ -39,8 +39,7 @@ import com.gesture.entity.Zone;
  * @see android.app.Fragment
  */
 public class ZoneListFragment
-		extends HarmonyListFragment<Zone>
-		implements CrudCreateMenuInterface {
+		extends HarmonyListFragment<Zone>{
 
 	/** The adapter which handles list population. */
 	protected ZoneListAdapter mAdapter;
@@ -155,13 +154,6 @@ public class ZoneListFragment
 	public void onLoaderReset(Loader<Cursor> loader) {
 		// Clear the data in the adapter.
 		this.mAdapter.clear();
-	}
-
-	@Override
-	public void onClickAdd() {
-		Intent intent = new Intent(this.getActivity(),
-					ZoneCreateActivity.class);
-		this.startActivity(intent);
 	}
 
 }

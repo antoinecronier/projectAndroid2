@@ -56,6 +56,7 @@ import com.gesture.provider.utils.CommandeProviderUtils;
 import com.gesture.provider.utils.LogTracaProviderUtils;
 import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
+import com.gesture.view.zone.ZoneListActivity;
 
 /**
  * Gère la production sur une machine donnée pour un produit donnée en générant
@@ -197,7 +198,7 @@ public class GestionPieceActivity extends Activity {
 				Editor edit = prefs.edit();
 				edit.putInt("LastCurrentUser", userForInstance.getId_user());
 				edit.putString("LastCurrentScreen",
-						AccueilUserActivity.class.toString());
+						ZoneListActivity.class.toString());
 				GestionPieceActivity.this
 						.finishActivity(Constantes.GESTION_PIECE_ACTIVITY);
 			}
