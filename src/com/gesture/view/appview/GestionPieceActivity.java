@@ -19,12 +19,16 @@ import android.widget.TextView;
 
 import com.gesture.R;
 import com.gesture.criterias.CommandeCriterias;
+import com.gesture.criterias.LogTracaCriterias;
 import com.gesture.criterias.ProduitCriterias;
 import com.gesture.criterias.UserCriterias;
 import com.gesture.criterias.base.Criteria.Type;
 import com.gesture.criterias.base.CriteriasBase.GroupType;
 import com.gesture.data.CommandeSQLiteAdapter;
+import com.gesture.data.LogTracaSQLiteAdapter;
+import com.gesture.data.ProduitSQLiteAdapter;
 import com.gesture.data.UserSQLiteAdapter;
+import com.gesture.data.WindowsGesture2SQLiteOpenHelper;
 import com.gesture.entity.Commande;
 import com.gesture.entity.LogTraca;
 import com.gesture.entity.Machine;
@@ -43,9 +47,9 @@ public class GestionPieceActivity extends Activity {
 	LogTraca currentLog;
 	Zone currentZone;
 	Machine currentMachine;
-	Produit currentProduit;	
+	Produit currentProduit;
 	Commande currentCommande;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,10 +84,26 @@ public class GestionPieceActivity extends Activity {
 			ArrayList<Produit> produits =  new CommandeProviderUtils(monContext).getAssociateProduits(currentCommande);
 			
 			/* Check log exist if not create */
-			// critLogTraca = new CommandeCriterias(GroupType.AND);
-			critCommande.add(CommandeSQLiteAdapter.COL_AVANCEMENT, "0", Type.SUPERIOR);
+			LogTracaCriterias critLogTraca = new LogTracaCriterias(GroupType.AND);
+			critCommande.add(LogTracaSQLiteAdapter.COL_MACHINE, String.valueOf(currentMachine.getId_machine()));
+			critCommande.add(LogTracaSQLiteAdapter.COL_PRODUIT, String.valueOf(currentProduit.getId_produit()));
+			//TODO innerjoin
+			critCommande.add(ProduitSQLiteAdapter.COL_COMMANDE, String.valueOf(currentCommande.getId_cmd()));
 			
-			//ArrayList<LogTraca> logsTraca =  new LogTracaProviderUtils(monContext).query(criteria);
+			
+			
+			ArrayList<LogTraca> logsTraca =  new LogTracaProviderUtils(monContext).query(critLogTraca);
+			
+			if (!logsTraca.isEmpty()) {
+				currentLog = logsTraca.get(0);
+			}else {
+				currentLog.setDateEntre(value);
+				currentLog.setMachine(value);
+				currentLog.setProduit(value);
+				currentLog.setUser(value)
+				
+				/* Show box to enter duration */
+			}
 		}
 		
 		ImageButton buttonConnexion = (ImageButton) this
