@@ -205,6 +205,7 @@ public class LogTraca  implements Serializable , Parcelable {
 
 
 
+
 	/**
 	 * Parcel Constructor.
 	 *

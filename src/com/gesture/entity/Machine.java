@@ -162,6 +162,7 @@ public class Machine  implements Serializable , Parcelable {
 
 
 
+
 	/**
 	 * Parcel Constructor.
 	 *

@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : all right reserved
- * Last update : Dec 19, 2013
+ * Last update : Dec 20, 2013
  *
  **************************************************************************/
 package com.gesture.menu;
@@ -31,7 +31,7 @@ public abstract class WindowsGesture2MenuBase {
 	/** Save value. */
 	public static final int SAVE = 0x2;
 	/** Crudcreate value. */
-	public static final int CRUDCREATE = 0x3;
+	public static final int CRUDCREATE = 0x6;
 
 	/** Array of MenuWrapperBase. */
 	protected SparseArray<MenuWrapperBase> menus =

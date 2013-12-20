@@ -96,6 +96,7 @@ public class Client  implements Serializable , Parcelable {
 
 
 
+
 	/**
 	 * Parcel Constructor.
 	 *

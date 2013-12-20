@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : all right reserved
- * Last update : Dec 19, 2013
+ * Last update : Dec 20, 2013
  *
  **************************************************************************/
 package com.gesture.data.base;
@@ -146,8 +146,8 @@ public abstract class CommandeSQLiteAdapterBase
 		 + COL_ID_CMD	+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
 		 + COL_CLIENT	+ " INTEGER NOT NULL,"
 		 + COL_DATECREATION	+ " DATETIME(2147483647) NOT NULL,"
-		 + COL_DATEFIN	+ " DATETIME(2147483647) NOT NULL,"
-		 + COL_DATELIVRAISON	+ " DATETIME(2147483647) NOT NULL,"
+		 + COL_DATEFIN	+ " DATETIME(2147483647),"
+		 + COL_DATELIVRAISON	+ " DATETIME(2147483647),"
 		 + COL_AVANCEMENT	+ " INTEGER NOT NULL,"
 		
 		
@@ -191,11 +191,15 @@ public abstract class CommandeSQLiteAdapterBase
 		if (item.getDateFin() != null) {
 			result.put(COL_DATEFIN,
 				item.getDateFin());
+		} else {
+			result.put(COL_DATEFIN, (String) null);
 		}
 
 		if (item.getDateLivraison() != null) {
 			result.put(COL_DATELIVRAISON,
 				item.getDateLivraison());
+		} else {
+			result.put(COL_DATELIVRAISON, (String) null);
 		}
 
 		result.put(COL_AVANCEMENT,
@@ -239,12 +243,16 @@ public abstract class CommandeSQLiteAdapterBase
 					cursor.getString(index));
 
 			index = cursor.getColumnIndexOrThrow(COL_DATEFIN);
-			result.setDateFin(
+			if (!cursor.isNull(index)) {
+				result.setDateFin(
 					cursor.getString(index));
+			}
 
 			index = cursor.getColumnIndexOrThrow(COL_DATELIVRAISON);
-			result.setDateLivraison(
+			if (!cursor.isNull(index)) {
+				result.setDateLivraison(
 					cursor.getString(index));
+			}
 
 			index = cursor.getColumnIndexOrThrow(COL_AVANCEMENT);
 			result.setAvancement(

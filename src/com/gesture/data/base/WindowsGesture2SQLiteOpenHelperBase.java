@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : all right reserved
- * Last update : Dec 19, 2013
+ * Last update : Dec 20, 2013
  *
  **************************************************************************/
 package com.gesture.data.base;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.gesture.data.WindowsGesture2SQLiteOpenHelper;
+
 import com.gesture.data.UserSQLiteAdapter;
 import com.gesture.data.ProduitSQLiteAdapter;
 import com.gesture.data.MachineSQLiteAdapter;
@@ -32,7 +32,6 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.gesture.fixture.DataLoader;
 
 
 /**
@@ -130,9 +129,6 @@ public class WindowsGesture2SQLiteOpenHelperBase
 
 			db.execSQL(ClientSQLiteAdapter.getSchema());
 			db.execSQL("PRAGMA foreign_keys = ON;");
-			if (!WindowsGesture2SQLiteOpenHelper.isJUnit) {
-				this.loadData(db);
-			}
 		}
 
 	}
@@ -180,19 +176,6 @@ public class WindowsGesture2SQLiteOpenHelperBase
 		// TODO : Upgrade your tables !
 	}
 
-	/**
-	 * Loads data from the fixture files.
-	 * @param db The database to populate with fixtures
-	 */
-	private void loadData(final SQLiteDatabase db) {
-		final DataLoader dataLoader = new DataLoader(this.ctx);
-		dataLoader.clean();
-		int mode = DataLoader.MODE_APP;
-		if (WindowsGesture2Application.DEBUG) {
-			mode = DataLoader.MODE_APP | DataLoader.MODE_DEBUG;
-		}
-		dataLoader.loadData(db, mode);
-	}
 
 	/**
 	 * Creates a empty database on the system and rewrites it with your own

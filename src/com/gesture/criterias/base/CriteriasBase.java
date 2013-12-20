@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : all right reserved
- * Last update : Dec 19, 2013
+ * Last update : Dec 20, 2013
  *
  **************************************************************************/
 package com.gesture.criterias.base;

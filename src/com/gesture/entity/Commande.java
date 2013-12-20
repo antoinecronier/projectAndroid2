@@ -220,6 +220,7 @@ public class Commande  implements Serializable , Parcelable {
 
 
 
+
 	/**
 	 * Parcel Constructor.
 	 *

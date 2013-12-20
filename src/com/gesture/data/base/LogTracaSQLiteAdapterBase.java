@@ -5,7 +5,7 @@
  * Description : 
  * Author(s)   : Harmony
  * Licence     : all right reserved
- * Last update : Dec 19, 2013
+ * Last update : Dec 20, 2013
  *
  **************************************************************************/
 package com.gesture.data.base;
@@ -165,7 +165,7 @@ public abstract class LogTracaSQLiteAdapterBase
 		 + COL_PRODUIT	+ " INTEGER NOT NULL,"
 		 + COL_MACHINE	+ " INTEGER NOT NULL,"
 		 + COL_USER	+ " INTEGER NOT NULL,"
-		 + COL_DUREE	+ " DATETIME(2147483647) NOT NULL,"
+		 + COL_DUREE	+ " DATETIME(2147483647),"
 		 + COL_DATEENTRE	+ " DATETIME(2147483647) NOT NULL,"
 		 + COL_DATESORTIE	+ " DATETIME(2147483647) NOT NULL,"
 		 + COL_MACHINELOGTRACASINTERNAL	+ " INTEGER,"
@@ -238,6 +238,8 @@ public abstract class LogTracaSQLiteAdapterBase
 		if (item.getDuree() != null) {
 			result.put(COL_DUREE,
 				item.getDuree());
+		} else {
+			result.put(COL_DUREE, (String) null);
 		}
 
 		if (item.getDateEntre() != null) {
@@ -294,8 +296,10 @@ public abstract class LogTracaSQLiteAdapterBase
 			result.setUser(user);
 
 			index = cursor.getColumnIndexOrThrow(COL_DUREE);
-			result.setDuree(
+			if (!cursor.isNull(index)) {
+				result.setDuree(
 					cursor.getString(index));
+			}
 
 			index = cursor.getColumnIndexOrThrow(COL_DATEENTRE);
 			result.setDateEntre(
