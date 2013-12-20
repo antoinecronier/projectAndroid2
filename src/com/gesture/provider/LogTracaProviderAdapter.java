@@ -24,18 +24,13 @@ import com.gesture.criterias.base.Criteria;
 import com.gesture.criterias.base.Criteria.Type;
 import com.gesture.criterias.base.CriteriasBase.GroupType;
 import com.gesture.criterias.base.value.ArrayValue;
-import com.gesture.data.CommandeSQLiteAdapter;
 import com.gesture.data.LogTracaSQLiteAdapter;
-import com.gesture.data.MachineSQLiteAdapter;
 import com.gesture.data.ProduitSQLiteAdapter;
-import com.gesture.data.UserSQLiteAdapter;
 import com.gesture.entity.Commande;
-import com.gesture.entity.LogTraca;
 import com.gesture.entity.Produit;
 import com.gesture.provider.base.LogTracaProviderAdapterBase;
 import com.gesture.provider.base.WindowsGesture2ProviderBase;
 import com.gesture.provider.utils.CommandeProviderUtils;
-import com.gesture.provider.utils.ProduitProviderUtils;
 
 /**
  * LogTracaProviderAdapter.
@@ -118,17 +113,12 @@ public class LogTracaProviderAdapter
 		int matchedUri = WindowsGesture2ProviderBase.getUriMatcher()
 				.match(uri);
 		Cursor result = null;
-		Cursor logTracaCursor;
-		
 
 		switch (matchedUri) {
 			case PRODUIT_COMMANDE:
 				result = this.method1(uri);
-				
-				
-				
-				
-				
+				//result = this.method2(uri);
+				//result = this.method3(uri);
 				break;
 
 			
