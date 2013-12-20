@@ -1,6 +1,16 @@
 package com.gesture.view.appview;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import org.joda.time.Chronology;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.ReadablePartial;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.DateTimePrinter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -40,6 +50,13 @@ import com.gesture.provider.utils.LogTracaProviderUtils;
 import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
 
+/**
+ * Gère la production sur une machine donnée pour un produit donnée en générant
+ * un log
+ * 
+ * @author alexandre
+ * 
+ */
 public class GestionPieceActivity extends Activity {
 
 	Context monContext;
@@ -53,14 +70,14 @@ public class GestionPieceActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		/* Init object */
 		userForInstance = new User();
 		currentLog = new LogTraca();
 		currentZone = new Zone();
 		currentMachine = new Machine();
 		currentProduit = new Produit();
-		
+
 		setContentView(R.layout.app_gestion_piece);
 		monContext = (Context) this;
 
@@ -70,42 +87,48 @@ public class GestionPieceActivity extends Activity {
 		/* Set object from preference */
 		userForInstance = (User) monBundle.get("CurrentUser");
 		currentZone = (Zone) monBundle.get("CurrentZone");
-		//Retrieve machine
+		currentMachine = (Machine) monBundle.get("CurrentMachine");
 
 		/* Set object from DB */
 		CommandeCriterias critCommande = new CommandeCriterias(GroupType.AND);
-		critCommande.add(CommandeSQLiteAdapter.COL_AVANCEMENT, "0", Type.SUPERIOR);
-		
+		critCommande.add(CommandeSQLiteAdapter.COL_AVANCEMENT, "0",
+				Type.SUPERIOR);
+
 		/* Récupère les commandes étant en progression */
-		ArrayList<Commande> commandes = new CommandeProviderUtils(monContext).query(critCommande);
-		if (!commandes.isEmpty())
-		{
+		ArrayList<Commande> commandes = new CommandeProviderUtils(monContext)
+				.query(critCommande);
+		if (!commandes.isEmpty()) {
 			currentCommande = commandes.get(0);
-			ArrayList<Produit> produits =  new CommandeProviderUtils(monContext).getAssociateProduits(currentCommande);
-			
+			ArrayList<Produit> produits = new CommandeProviderUtils(monContext)
+					.getAssociateProduits(currentCommande);
+
 			/* Check log exist if not create */
-			LogTracaCriterias critLogTraca = new LogTracaCriterias(GroupType.AND);
-			critCommande.add(LogTracaSQLiteAdapter.COL_MACHINE, String.valueOf(currentMachine.getId_machine()));
-			critCommande.add(LogTracaSQLiteAdapter.COL_PRODUIT, String.valueOf(currentProduit.getId_produit()));
-			//TODO innerjoin
-			critCommande.add(ProduitSQLiteAdapter.COL_COMMANDE, String.valueOf(currentCommande.getId_cmd()));
-			
-			
-			
-			ArrayList<LogTraca> logsTraca =  new LogTracaProviderUtils(monContext).query(critLogTraca);
-			
+			LogTracaCriterias critLogTraca = new LogTracaCriterias(
+					GroupType.AND);
+			critCommande.add(LogTracaSQLiteAdapter.COL_MACHINE,
+					String.valueOf(currentMachine.getId_machine()));
+			critCommande.add(LogTracaSQLiteAdapter.COL_PRODUIT,
+					String.valueOf(currentProduit.getId_produit()));
+			// TODO inner-joint
+			critCommande.add(ProduitSQLiteAdapter.COL_COMMANDE,
+					String.valueOf(currentCommande.getId_cmd()));
+
+			ArrayList<LogTraca> logsTraca = new LogTracaProviderUtils(
+					monContext).query(critLogTraca);
+
 			if (!logsTraca.isEmpty()) {
 				currentLog = logsTraca.get(0);
-			}else {
-				currentLog.setDateEntre(value);
-				currentLog.setMachine(value);
-				currentLog.setProduit(value);
-				currentLog.setUser(value)
-				
+			} else {
+				currentLog.setDateEntre(DateTime.now().toString());
+				currentLog.setMachine(currentMachine);
+				currentLog.setProduit(currentProduit);
+				currentLog.setUser(userForInstance);
+
+				//LogTracaProviderUtils logTracaProvider = navigateUpTo(upIntent)
 				/* Show box to enter duration */
 			}
 		}
-		
+
 		ImageButton buttonConnexion = (ImageButton) this
 				.findViewById(R.id.imageButton1);
 		buttonConnexion.setOnClickListener(new OnClickListener() {
@@ -128,59 +151,58 @@ public class GestionPieceActivity extends Activity {
 		Button textViewBtn_start_pdt = (Button) this
 				.findViewById(R.id.btn_start_pdt);
 		textViewBtn_start_pdt.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		Button textViewBtn_stop_pdt = (Button) this
 				.findViewById(R.id.btn_stop_pdt);
 		textViewBtn_stop_pdt.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		Button textViewBtn_next_pdt = (Button) this
 				.findViewById(R.id.btn_next_pdt);
 		textViewBtn_next_pdt.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		Button textViewBtn_rebut_pdt = (Button) this
 				.findViewById(R.id.btn_rebut_pdt);
 		textViewBtn_rebut_pdt.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		Button textViewBtn_change_zone = (Button) this
 				.findViewById(R.id.btn_change_zone);
 		textViewBtn_change_zone.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		
+
 		/* Remplit les objects de la fenêtre */
 
 		TextView textViewZone = (TextView) this.findViewById(R.id.tvZone);
