@@ -1,11 +1,15 @@
 package com.gesture.view.appview;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,25 +18,74 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.gesture.R;
+import com.gesture.criterias.CommandeCriterias;
+import com.gesture.criterias.ProduitCriterias;
+import com.gesture.criterias.UserCriterias;
+import com.gesture.criterias.base.Criteria.Type;
+import com.gesture.criterias.base.CriteriasBase.GroupType;
+import com.gesture.data.CommandeSQLiteAdapter;
+import com.gesture.data.UserSQLiteAdapter;
+import com.gesture.entity.Commande;
+import com.gesture.entity.LogTraca;
+import com.gesture.entity.Machine;
+import com.gesture.entity.Produit;
 import com.gesture.entity.User;
+import com.gesture.entity.Zone;
+import com.gesture.provider.utils.CommandeProviderUtils;
+import com.gesture.provider.utils.LogTracaProviderUtils;
+import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
 
 public class GestionPieceActivity extends Activity {
 
 	Context monContext;
 	User userForInstance;
-
+	LogTraca currentLog;
+	Zone currentZone;
+	Machine currentMachine;
+	Produit currentProduit;	
+	Commande currentCommande;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		/* Init object */
+		userForInstance = new User();
+		currentLog = new LogTraca();
+		currentZone = new Zone();
+		currentMachine = new Machine();
+		currentProduit = new Produit();
+		
 		setContentView(R.layout.app_gestion_piece);
 		monContext = (Context) this;
 
 		Bundle monBundle;
 		monBundle = this.getIntent().getExtras();
 
+		/* Set object from preference */
 		userForInstance = (User) monBundle.get("CurrentUser");
+		currentZone = (Zone) monBundle.get("CurrentZone");
+		//Retrieve machine
 
+		/* Set object from DB */
+		CommandeCriterias critCommande = new CommandeCriterias(GroupType.AND);
+		critCommande.add(CommandeSQLiteAdapter.COL_AVANCEMENT, "0", Type.SUPERIOR);
+		
+		/* Récupère les commandes étant en progression */
+		ArrayList<Commande> commandes = new CommandeProviderUtils(monContext).query(critCommande);
+		if (!commandes.isEmpty())
+		{
+			currentCommande = commandes.get(0);
+			ArrayList<Produit> produits =  new CommandeProviderUtils(monContext).getAssociateProduits(currentCommande);
+			
+			/* Check log exist if not create */
+			// critLogTraca = new CommandeCriterias(GroupType.AND);
+			critCommande.add(CommandeSQLiteAdapter.COL_AVANCEMENT, "0", Type.SUPERIOR);
+			
+			//ArrayList<LogTraca> logsTraca =  new LogTracaProviderUtils(monContext).query(criteria);
+		}
+		
 		ImageButton buttonConnexion = (ImageButton) this
 				.findViewById(R.id.imageButton1);
 		buttonConnexion.setOnClickListener(new OnClickListener() {
