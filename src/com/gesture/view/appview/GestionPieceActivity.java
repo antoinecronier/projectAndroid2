@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
@@ -73,6 +74,8 @@ public class GestionPieceActivity extends Activity {
 	Produit currentProduit;
 	Commande currentCommande;
 
+	AlertDialog.Builder builder;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -148,29 +151,35 @@ public class GestionPieceActivity extends Activity {
 						.setId_user(
 								monCu.getInt(monCu
 										.getColumnIndex(LogTracaSQLiteAdapter.COL_USER)));
-			}else {
+			} else {
 				currentLog.setDateEntre(DateTime.now().toString());
 				currentLog.setMachine(currentMachine);
 				currentLog.setProduit(currentProduit);
 				currentLog.setUser(userForInstance);
 
 				/* Show box to enter duration */
-				AlertDialog.Builder builder = new Builder(monContext);
+				builder = new Builder(monContext);
 				final EditText text = new EditText(monContext);
 
-				builder.setTitle("Entrer delais de conception").setMessage("Name this new profile").setView(text);
-//				builder.setPositiveButton("Create", new OnClickListener() {
-//
-//				    public void onClick(DialogInterface di, int i) {
-//				        final String name = text.getText().toString();
-//				        //do something with it
-//				    }
-//				});
-//				builder.setNegativeButton("Cancel", new OnClickListener() {
-//
-//				    public void onClick(DialogInterface di, int i) {
-//				    }
-//				});
+				builder.setTitle("Entrer delais de conception").setMessage("")
+						.setView(text);
+
+				/* Button to set duration */
+				builder.setPositiveButton("Valider",
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								if (Integer.getInteger(text.getText()
+										.toString()) != null) {
+									currentLog.setDuree(text.getText()
+											.toString());
+								}else {
+									builder.create().show();
+								}
+							}
+						});
 				builder.create().show();
 			}
 		}
