@@ -115,7 +115,7 @@ public class MachineCreateFragment extends HarmonyFragment
 
 	}
 
-	/** Check data is valid.
+	/** Check data is valid. MODIFIED
 	 *
 	 * @return true if valid
 	 */
@@ -129,9 +129,10 @@ public class MachineCreateFragment extends HarmonyFragment
 		if (this.zoneAdapter.getSelectedItem() == null) {
 			error = R.string.machine_zone_invalid_field_error;
 		}
-		if (this.LogTracasAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.machine_logtracas_invalid_field_error;
-		}
+		//Suppression validation du log null
+//		if (this.LogTracasAdapter.getCheckedItems().isEmpty()) {
+//			error = R.string.machine_logtracas_invalid_field_error;
+//		}
 	
 		if (error > 0) {
 			Toast.makeText(this.getActivity(),
