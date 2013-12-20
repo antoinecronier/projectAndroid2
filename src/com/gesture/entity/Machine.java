@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 import com.tactfactory.harmony.annotation.Column;
 import com.tactfactory.harmony.annotation.Column.Type;
 import com.tactfactory.harmony.annotation.Entity;
@@ -42,6 +44,7 @@ public class Machine  implements Serializable , Parcelable {
 	private Zone zone;
 	
 	@OneToMany
+	@Column(nullable=true)
 	private ArrayList<LogTraca> LogTracas;
 
 	

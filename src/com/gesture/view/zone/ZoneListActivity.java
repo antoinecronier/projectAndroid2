@@ -14,12 +14,21 @@ import com.gesture.R;
 
 import com.gesture.harmony.view.HarmonyFragmentActivity;
 import com.gesture.harmony.view.HarmonyListFragment;
+import com.gesture.view.appcode.Constantes;
+import com.gesture.view.machine.MachineListActivity;
 import com.google.android.pinnedheader.util.ComponentUtils;
+import com.gesture.entity.User;
 import com.gesture.entity.Zone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 /**
@@ -36,6 +45,9 @@ public class ZoneListActivity
 		implements HarmonyListFragment.OnClickCallback,
 				HarmonyListFragment.OnLoadCallback {
 
+	Context monContext;
+	User userForInstance;
+	
 	/** Associated list fragment. */
 	protected ZoneListFragment listFragment;
 	/** Associated detail fragment if any (in case of tablet). */
@@ -73,6 +85,31 @@ public class ZoneListActivity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_zone_list);
+		
+		monContext = (Context) this;
+
+		Bundle monBundle;
+		monBundle = this.getIntent().getExtras();
+
+		userForInstance = (User) monBundle.get("CurrentUser");
+
+		ImageButton buttonConnexion = (ImageButton) this
+				.findViewById(R.id.imageButton1);
+		buttonConnexion.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SharedPreferences prefs = PreferenceManager
+						.getDefaultSharedPreferences(ZoneListActivity.this);
+				Editor edit = prefs.edit();
+				edit.putInt("LastCurrentUser", userForInstance.getId_user());
+				edit.putString("LastCurrentScreen",
+						ZoneListActivity.class.toString());
+				ZoneListActivity.this
+						.finishActivity(Constantes.ACCUEIL_USER_ACTIVITY);
+			}
+		});
+
 	}
 
 	@Override
@@ -101,8 +138,16 @@ public class ZoneListActivity
 		if (this.isDualMode()) {
 			this.selectListItem(this.lastSelectedItemPosition);
 		} else {
-			final Intent intent = new Intent(this, ZoneShowActivity.class);
+			//Affichage écran choix machine
+			final Intent intent = new Intent(this, MachineListActivity.class);
 			final Zone item = (Zone) l.getItemAtPosition(position);
+			
+			//Enregistrement de la zonedans les prefs
+			SharedPreferences prefs = PreferenceManager
+					.getDefaultSharedPreferences(ZoneListActivity.this);
+			Editor edit = prefs.edit();
+			edit.putInt("idZoneChoisie", item.getId_zone());
+			
 			Bundle extras = new Bundle();
 			extras.putParcelable(Zone.PARCEL, item);
 			intent.putExtras(extras);

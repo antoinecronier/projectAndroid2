@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.gesture.R;
 import com.gesture.entity.User;
 import com.gesture.view.appcode.Constantes;
+import com.gesture.view.zone.ZoneListActivity;
 
 public class GestionPieceActivity extends Activity {
 
@@ -46,7 +47,7 @@ public class GestionPieceActivity extends Activity {
 				Editor edit = prefs.edit();
 				edit.putInt("LastCurrentUser", userForInstance.getId_user());
 				edit.putString("LastCurrentScreen",
-						AccueilUserActivity.class.toString());
+						ZoneListActivity.class.toString());
 				GestionPieceActivity.this
 						.finishActivity(Constantes.GESTION_PIECE_ACTIVITY);
 			}

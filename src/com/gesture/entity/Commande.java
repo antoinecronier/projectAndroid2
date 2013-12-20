@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 import com.tactfactory.harmony.annotation.Column;
 import com.tactfactory.harmony.annotation.Entity;
 import com.tactfactory.harmony.annotation.Id;
@@ -43,10 +45,10 @@ public class Commande  implements Serializable , Parcelable {
 	@Column(type=Type.DATETIME)
 	private String dateCreation;
 	
-	@Column(type=Type.DATETIME)
+	@Column(type=Type.DATETIME, nullable=true)
 	private String dateFin;
 	
-	@Column(type=Type.DATETIME)
+	@Column(type=Type.DATETIME, nullable=true)
 	private String dateLivraison;
 	
 	@Column(type=Type.INTEGER)

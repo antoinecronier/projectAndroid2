@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
 import javax.crypto.Mac;
 
 import com.tactfactory.harmony.annotation.Column;
@@ -46,7 +47,7 @@ public class LogTraca  implements Serializable , Parcelable {
 	@ManyToOne
 	private User user;
 	
-	@Column(type=Type.DATETIME)
+	@Column(type=Type.DATETIME, nullable=true)
 	private String duree;
 	
 	@Column(type=Type.DATETIME)
