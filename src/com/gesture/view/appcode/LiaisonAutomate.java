@@ -11,29 +11,32 @@ import com.gesture.entity.Produit;
 
 public class LiaisonAutomate {
 
-	static DateTime timerDuration;
-	Timer monTimer;
+	LogTraca logtraca;
 
-	public static DateTime getTimerDuration() {
-		return timerDuration;
+	public LogTraca getLogtraca() {
+		return logtraca;
 	}
 
-	public static void setTimerDuration(DateTime timerDuration) {
-		LiaisonAutomate.timerDuration = timerDuration;
-	}
-	
-	public LiaisonAutomate(LogTraca logTraca)
-	{
-		this.timerDuration = DateTime.parse(logTraca.getDuree());
-		monTimer = new Timer("Automate");
-		TimerTask timerTask = new TimerTask() {
-			
-			@Override
-			public void run() {
-				//logTraca.setDuree(String.valueOf(0.0));
+	/**
+	 * Simule le timer d'une machine
+	 * 
+	 * @param logTraca
+	 */
+	public LiaisonAutomate(LogTraca logTraca) {
+		this.logtraca = logTraca;
+
+		int delay = Integer.parseInt(logTraca.getDuree());
+		delay = delay / 100;
+
+		/*Attend chaque 1% et enlève 1% de la durée à la fin de chaque boucle.*/
+		for (int index = 0; index < 100; index++) {
+			try {
+				Thread.sleep(delay);
+				logtraca.setDuree(String.valueOf(Integer.parseInt(logTraca
+						.getDuree()) - delay));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		};
-		/* time in millisecond */
-		monTimer.schedule(timerTask, Long.parseLong(logTraca.getDuree()));
+		}
 	}
 }

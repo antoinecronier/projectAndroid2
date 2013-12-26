@@ -56,6 +56,7 @@ import com.gesture.provider.utils.CommandeProviderUtils;
 import com.gesture.provider.utils.LogTracaProviderUtils;
 import com.gesture.provider.utils.UserProviderUtils;
 import com.gesture.view.appcode.Constantes;
+import com.gesture.view.appcode.LiaisonAutomate;
 import com.gesture.view.zone.ZoneListActivity;
 
 /**
@@ -74,6 +75,7 @@ public class GestionPieceActivity extends Activity {
 	Machine currentMachine;
 	Produit currentProduit;
 	Commande currentCommande;
+	LiaisonAutomate automate;
 
 	AlertDialog.Builder builder;
 	
@@ -199,6 +201,7 @@ public class GestionPieceActivity extends Activity {
 				edit.putInt("LastCurrentUser", userForInstance.getId_user());
 				edit.putString("LastCurrentScreen",
 						ZoneListActivity.class.toString());
+				edit.commit();
 				GestionPieceActivity.this
 						.finishActivity(Constantes.GESTION_PIECE_ACTIVITY);
 			}
@@ -210,8 +213,8 @@ public class GestionPieceActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				/* Démarre l'usinage */
+				automate = new LiaisonAutomate(currentLog);
 			}
 		});
 
@@ -221,8 +224,9 @@ public class GestionPieceActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				/* Arrête l'usinage en gardant la durée restante */
+				currentLog.setDuree(automate.getLogtraca().getDuree());
+				automate = null;
 			}
 		});
 

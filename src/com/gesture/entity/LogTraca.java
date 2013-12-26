@@ -122,7 +122,7 @@ public class LogTraca  implements Serializable , Parcelable {
 	}
 
 	/**
-	 * @return the duree
+	 * @return the duree (here you have to set duration in int)
 	 */
 	public String getDuree() {
 	     return this.duree;

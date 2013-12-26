@@ -105,6 +105,7 @@ public class ZoneListActivity
 				edit.putInt("LastCurrentUser", userForInstance.getId_user());
 				edit.putString("LastCurrentScreen",
 						ZoneListActivity.class.toString());
+				edit.commit();
 				ZoneListActivity.this
 						.finishActivity(Constantes.ACCUEIL_USER_ACTIVITY);
 			}
@@ -147,6 +148,7 @@ public class ZoneListActivity
 					.getDefaultSharedPreferences(ZoneListActivity.this);
 			Editor edit = prefs.edit();
 			edit.putInt("idZoneChoisie", item.getId_zone());
+			edit.commit();
 			
 			Bundle extras = new Bundle();
 			extras.putParcelable(Zone.PARCEL, item);
