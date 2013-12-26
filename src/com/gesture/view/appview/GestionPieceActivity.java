@@ -77,8 +77,11 @@ public class GestionPieceActivity extends Activity {
 	Commande currentCommande;
 	LiaisonAutomate automate;
 
+	SharedPreferences prefs = PreferenceManager
+			.getDefaultSharedPreferences(GestionPieceActivity.this);
+
 	AlertDialog.Builder builder;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -116,7 +119,7 @@ public class GestionPieceActivity extends Activity {
 			ArrayList<Produit> produits = new CommandeProviderUtils(monContext)
 					.getAssociateProduits(currentCommande);
 
-			/* Check log exist if not create */
+			/* Check log exist, if not create */
 			/*
 			 * getPathSegments().get(1) check # we have to remplace by commande
 			 * ID
@@ -178,7 +181,7 @@ public class GestionPieceActivity extends Activity {
 										.toString()) != null) {
 									currentLog.setDuree(text.getText()
 											.toString());
-								}else {
+								} else {
 									builder.create().show();
 								}
 							}
@@ -195,8 +198,6 @@ public class GestionPieceActivity extends Activity {
 			public void onClick(View v) {
 				// made save
 
-				SharedPreferences prefs = PreferenceManager
-						.getDefaultSharedPreferences(GestionPieceActivity.this);
 				Editor edit = prefs.edit();
 				edit.putInt("LastCurrentUser", userForInstance.getId_user());
 				edit.putString("LastCurrentScreen",
@@ -226,6 +227,9 @@ public class GestionPieceActivity extends Activity {
 			public void onClick(View v) {
 				/* Arrête l'usinage en gardant la durée restante */
 				currentLog.setDuree(automate.getLogtraca().getDuree());
+				LogTracaProviderUtils provider = new LogTracaProviderUtils(
+						monContext);
+				provider.insert(currentLog);
 				automate = null;
 			}
 		});
@@ -236,8 +240,12 @@ public class GestionPieceActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				// TODO implement next item
+				currentLog.setDateSortie(DateTime.now().toString());
+				LogTracaProviderUtils provider = new LogTracaProviderUtils(
+						monContext);
+				provider.insert(currentLog);
+				new GestionPieceActivity();
 			}
 		});
 

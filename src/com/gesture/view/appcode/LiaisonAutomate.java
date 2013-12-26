@@ -1,13 +1,20 @@
 package com.gesture.view.appcode;
 
+import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import org.joda.time.DateTime;
 import org.joda.time.JodaTimePermission;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Parcelable;
+import android.preference.PreferenceManager;
+
 import com.gesture.entity.LogTraca;
 import com.gesture.entity.Produit;
+import com.gesture.view.appview.GestionPieceActivity;
 
 public class LiaisonAutomate {
 
@@ -24,7 +31,7 @@ public class LiaisonAutomate {
 	 */
 	public LiaisonAutomate(LogTraca logTraca) {
 		this.logtraca = logTraca;
-
+		
 		int delay = Integer.parseInt(logTraca.getDuree());
 		delay = delay / 100;
 
