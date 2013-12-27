@@ -41,11 +41,11 @@ public class Produit  implements Serializable , Parcelable {
 		/**
          * fenetre
          */
-		fenetre("fenetre"),
+		fenetre("Fenêtre"),
         /**
          * porte.
          */
-		porte("porte");
+		porte("Porte");
 
         /** Type type. */
         @Id
@@ -68,6 +68,16 @@ public class Produit  implements Serializable , Parcelable {
         public final String getValue() {
                 return this.type;
         }
+        
+        /**
+         * Return type name 
+         * 
+         * @return String type;
+         */
+		  @Override 
+		  public String toString() {
+		    return this.type;
+		  }
 
         /**
          * Get the type by its name if it exists.
@@ -93,23 +103,23 @@ public class Produit  implements Serializable , Parcelable {
 		/**
          * encours
          */
-		encours("encours"),
+		encours("En cours"),
         /**
          * porte.
          */
-		valide("valide"),
+		valide("Validé"),
 		/**
          * rebut
          */
-		rebut("rebut"),
+		rebut("Mis en rebut"),
         /**
          * standby.
          */
-		standby("standby");
+		standby("En attente");
 
         /** Type type. */
         @Id
-        private String type;
+        private String etat;
 
         /**
          * Enum Type of the alert.
@@ -117,7 +127,7 @@ public class Produit  implements Serializable , Parcelable {
          * @param value Integer Type value
          */
         private ProduitEtat(final String value) {
-                this.type = value;
+                this.etat = value;
         }
 
         /**
@@ -126,8 +136,19 @@ public class Produit  implements Serializable , Parcelable {
          * @return String Type
          */
         public final String getValue() {
-                return this.type;
+                return this.etat;
         }
+        
+        /**
+         * Return etat name 
+         * 
+         * @return String etat;
+         */
+		  @Override 
+		  public String toString() {
+		    return this.etat;
+		  }
+
 
         /**
          * Get the type by its name if it exists.
@@ -139,7 +160,7 @@ public class Produit  implements Serializable , Parcelable {
         	ProduitEtat ret = null;
                 if (value != null) {
                         for (final ProduitEtat type : ProduitEtat.values()) {
-                                if (value.equals(type.type)) {
+                                if (value.equals(type.etat)) {
                                         ret = type;
                                 }
                         }
@@ -153,19 +174,19 @@ public class Produit  implements Serializable , Parcelable {
 		/**
          * aluminium
          */
-		aluminium("aluminium"),
+		aluminium("Aluminium"),
         /**
          * acier.
          */
-		acier("acier"),
+		acier("Acier"),
 		/**
          * rebut
          */
-		acierrenforce("acierrenforce");
+		acierrenforce("Acien renforcé");
 
         /** Type type. */
         @Id
-        private String type;
+        private String materiel;
 
         /**
          * Enum Type of the alert.
@@ -173,7 +194,7 @@ public class Produit  implements Serializable , Parcelable {
          * @param value Integer Type value
          */
         private ProduitMateriel(final String value) {
-                this.type = value;
+                this.materiel = value;
         }
 
         /**
@@ -182,8 +203,18 @@ public class Produit  implements Serializable , Parcelable {
          * @return String Type
          */
         public final String getValue() {
-                return this.type;
+                return this.materiel;
         }
+        
+        /**
+         * Return etat name 
+         * 
+         * @return String etat;
+         */
+		  @Override 
+		  public String toString() {
+		    return this.materiel;
+		  }
 
         /**
          * Get the type by its name if it exists.
@@ -195,7 +226,7 @@ public class Produit  implements Serializable , Parcelable {
         	ProduitMateriel ret = null;
                 if (value != null) {
                         for (final ProduitMateriel type : ProduitMateriel.values()) {
-                                if (value.equals(type.type)) {
+                                if (value.equals(type.materiel)) {
                                         ret = type;
                                 }
                         }

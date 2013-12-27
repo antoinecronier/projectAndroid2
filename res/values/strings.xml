@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<!-- App Strings -->
-	<string name="accueil_admin_qualite">Qualité</string>
-	<string name="accueil_logi">Gestion ligne de production</string>
+	<!-- App Strings Boutons-->
 	<string name="action_settings">Settings</string>
 	<string name="app_provider_description">Provider of WindowsGesture2 to access data</string>
 	<string name="app_provider_name">Provider of WindowsGesture2</string>
@@ -31,7 +29,9 @@
 	<string name="btn_zone_decoup">Découpage</string>
 	<string name="btn_zone_facon">Façonnage</string>
 	<string name="btn_zone_peint">Peinture</string>
-	<!-- App Strings boutons -->
+	<!-- App Strings -->
+	<string name="accueil_admin_qualite">Qualité</string>
+    <string name="accueil_logi">Gestion ligne de production</string>
 	<string name="choix_machine">Choisir la machine</string>
 	<string name="choix_zone">Choisir la zone</string>
 	<string name="client">Client</string>

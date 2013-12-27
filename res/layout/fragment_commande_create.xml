@@ -1,77 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:harmony="http://schemas.android.com/apk/res/com.gesture"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_background_holo"
+    android:orientation="vertical" >
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:contentDescription="@string/desc_img_deco"
+        android:src="@drawable/deconnexion" />
+
     <TextView
-    	android:id="@+id/commande_client_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/commande_client_label"/>
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/btn_create_cmd"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/darkred"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/commande_client_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/commande_client_label" />
+
     <com.gesture.harmony.widget.SingleEntityWidget
         android:id="@+id/commande_client_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_client_label" />
+        android:layout_height="wrap_content" />
+
     <TextView
-    	android:id="@+id/commande_datecreation_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_client_button"
-	    android:text="@string/commande_datecreation_label"/>
-    <EditText
-		android:id="@+id/commande_datecreation"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:inputType="text"
-		android:layout_below="@+id/commande_datecreation_label" />
-    <TextView
-    	android:id="@+id/commande_datefin_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_datecreation"
-	    android:text="@string/commande_datefin_label"/>
-    <EditText
-		android:id="@+id/commande_datefin"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:inputType="text"
-		android:layout_below="@+id/commande_datefin_label" />
-    <TextView
-    	android:id="@+id/commande_datelivraison_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_datefin"
-	    android:text="@string/commande_datelivraison_label"/>
-    <EditText
-		android:id="@+id/commande_datelivraison"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:inputType="text"
-		android:layout_below="@+id/commande_datelivraison_label" />
-    <TextView
-    	android:id="@+id/commande_avancement_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_datelivraison"
-	    android:text="@string/commande_avancement_label"/>
-    <EditText
-		android:id="@+id/commande_avancement"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:inputType="number"
-		android:layout_below="@+id/commande_avancement_label" />
-    <TextView
-    	android:id="@+id/commande_produits_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_avancement"
-	    android:text="@string/commande_produits_label"/>
-    <com.gesture.harmony.widget.MultiEntityWidget
-        android:id="@+id/commande_produits_button"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	    android:layout_below="@+id/commande_produits_label" />
-</RelativeLayout>
+        android:text="@string/produit_cmd" />
+
+    <Spinner
+        android:id="@+id/spinProduit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/matiere" />
+
+    <Spinner
+        android:id="@+id/spinMatiere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quantite" />
+
+    <EditText
+        android:id="@+id/quantite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

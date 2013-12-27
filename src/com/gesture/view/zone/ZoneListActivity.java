@@ -107,7 +107,7 @@ public class ZoneListActivity
 						ZoneListActivity.class.toString());
 				edit.commit();
 				ZoneListActivity.this
-						.finishActivity(Constantes.ACCUEIL_USER_ACTIVITY);
+						.finishActivity(Constantes.LOGIN_ACTIVITY);
 			}
 		});
 
