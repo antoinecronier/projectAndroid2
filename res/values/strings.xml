@@ -10,6 +10,7 @@
 	<string name="btn_change_zone">Changer de zone</string>
 	<string name="btn_check_qualite">Vérifier mises en rebut</string>
 	<string name="btn_cmd_encours">Commandes en cours</string>
+	<string name="btn_add_client">Ajouter un client</string>
 	<string name="btn_create_cmd">Création commande</string>
 	<string name="btn_del_cmd">Supprimer commande</string>
 	<color name="btn_green">#17A843</color>
@@ -28,7 +29,10 @@
 	<string name="btn_zone_ass">Assemblage</string>
 	<string name="btn_zone_decoup">Découpage</string>
 	<string name="btn_zone_facon">Façonnage</string>
-	<string name="btn_zone_peint">Peinture</string>
+	<string name="btn_add_user">Ajout utilisateur</string>
+	<string name="btn_add_machine">Ajout machine</string>
+	<string name="btn_add_zone">Ajout zone</string>
+	
 	<!-- App Strings -->
 	<string name="accueil_admin_qualite">Qualité</string>
     <string name="accueil_logi">Gestion ligne de production</string>

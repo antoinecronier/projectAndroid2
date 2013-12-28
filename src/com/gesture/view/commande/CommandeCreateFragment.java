@@ -11,6 +11,7 @@
 package com.gesture.view.commande;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -22,8 +23,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,7 +51,7 @@ import com.gesture.provider.utils.CommandeProviderUtils;
  * This fragment gives you an interface to create a Commande.
  */
 public class CommandeCreateFragment extends HarmonyFragment implements
-		SaveMenuInterface {
+		OnClickListener {
 	/** Model data. */
 	protected Commande model = new Commande();
 
@@ -61,6 +65,9 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 	/** spinner matière */
 	protected Spinner spinMatiere;
 
+	protected Button btnCreateCmd;
+	protected EditText edtQuantite;
+	
 	/**
 	 * Initialize view of fields.
 	 * 
@@ -82,11 +89,16 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		this.spinProduit.setAdapter(new ArrayAdapter<ProduitType>(
 				getActivity(), android.R.layout.simple_spinner_item,
 				ProduitType.values()));
-		
+
 		this.spinMatiere = (Spinner) view.findViewById(R.id.spinMatiere);
 		this.spinMatiere.setAdapter(new ArrayAdapter<ProduitMateriel>(
 				getActivity(), android.R.layout.simple_spinner_item,
 				ProduitMateriel.values()));
+		
+		this.btnCreateCmd = (Button) view.findViewById(R.id.btn_val_cmd);
+		this.btnCreateCmd.setOnClickListener(this);
+		
+		this.edtQuantite = (EditText) view.findViewById(R.id.quantite);
 
 	}
 
@@ -99,7 +111,27 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 	/** Save data from fields view to model. */
 	public void saveData() {
 
+		Date currentDate = new Date();
+		
 		this.model.setClient(this.clientAdapter.getSelectedItem());
+		this.model.setAvancement(0);
+		this.model.setDateCreation(currentDate.toString());
+		
+		//création des produits
+		String typeProduit = this.spinProduit.getSelectedItem().toString();
+		String matierProduit = this.spinMatiere.getSelectedItem().toString();
+		int quantite = Integer.parseInt(this.edtQuantite.getText().toString());
+		
+		ArrayList<Produit> listPdt = new ArrayList<Produit>();
+		
+		do{
+			Produit pdt = new Produit();
+			//TODO creation des produits, et enregistrement en bdd
+			listPdt.add(pdt);
+			quantite--;
+		}while(quantite==1);
+		
+		this.model.setProduits(listPdt);
 	}
 
 	/**
@@ -238,12 +270,10 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		protected void onPreExecute() {
 			super.onPreExecute();
 
-			this.progress = ProgressDialog.show(
-				this.ctx,
-				this.ctx
-				.getString(R.string.commande_progress_load_relations_title),
-				this.ctx
-				.getString(R.string.commande_progress_load_relations_message));
+			this.progress = ProgressDialog
+					.show(this.ctx,
+							this.ctx.getString(R.string.commande_progress_load_relations_title),
+							this.ctx.getString(R.string.commande_progress_load_relations_message));
 		}
 
 		@Override
@@ -260,11 +290,16 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		}
 	}
 
-	@Override
-	public void onClickSave() {
-		if (this.validateData()) {
+	//Gestion événements
+	public void onClick(View view) {
+		
+		if (view == btnCreateCmd) {
+			//TODO enregistrement de la commande
 			this.saveData();
 			new CreateTask(this, this.model).execute();
+			//TODO création des produits selon la quantité
+			//Redirection écran de paramètrage tracabilité
 		}
+
 	}
 }

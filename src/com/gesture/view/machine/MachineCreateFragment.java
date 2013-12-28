@@ -59,11 +59,6 @@ public class MachineCreateFragment extends HarmonyFragment
 	/** The zone Adapter. */
 	protected SingleEntityWidget.EntityAdapter<Zone> 
 				zoneAdapter;
-	/** The LogTracas chooser component. */
-	protected MultiEntityWidget LogTracasWidget;
-	/** The LogTracas Adapter. */
-	protected MultiEntityWidget.EntityAdapter<LogTraca> 
-				LogTracasAdapter;
 
 	/** Initialize view of fields.
 	 *
@@ -76,22 +71,12 @@ public class MachineCreateFragment extends HarmonyFragment
 				new SingleEntityWidget.EntityAdapter<Zone>() {
 			@Override
 			public String entityToString(Zone item) {
-				return String.valueOf(item.getId_zone());
+				return item.getNom();
 			}
 		};
 		this.zoneWidget =
 			(SingleEntityWidget) view.findViewById(R.id.machine_zone_button);
 		this.zoneWidget.setAdapter(this.zoneAdapter);
-		this.LogTracasAdapter = 
-				new MultiEntityWidget.EntityAdapter<LogTraca>() {
-			@Override
-			public String entityToString(LogTraca item) {
-				return String.valueOf(item.getId_log());
-			}
-		};
-		this.LogTracasWidget =
-			(MultiEntityWidget) view.findViewById(R.id.machine_logtracas_button);
-		this.LogTracasWidget.setAdapter(this.LogTracasAdapter);
 	}
 
 	/** Load data from model to fields view. */
@@ -110,8 +95,6 @@ public class MachineCreateFragment extends HarmonyFragment
 		this.model.setNom(this.nomView.getEditableText().toString());
 
 		this.model.setZone(this.zoneAdapter.getSelectedItem());
-
-		this.model.setLogTracas(this.LogTracasAdapter.getCheckedItems());
 
 	}
 
@@ -285,7 +268,6 @@ public class MachineCreateFragment extends HarmonyFragment
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			this.fragment.zoneAdapter.loadData(this.zoneList);
-			this.fragment.LogTracasAdapter.loadData(this.LogTracasList);
 			this.progress.dismiss();
 		}
 	}

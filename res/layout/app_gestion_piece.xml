@@ -30,8 +30,7 @@
             android:id="@+id/tvZone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Label à remplir avec la zone" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -53,8 +52,7 @@
             android:id="@+id/tvProduit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Label à remplir avec le produit" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -76,8 +74,7 @@
             android:id="@+id/tvStatut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Label à remplir avec le statut" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout

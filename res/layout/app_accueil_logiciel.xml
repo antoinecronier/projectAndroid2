@@ -29,19 +29,19 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/btn_create_cmd"
+            android:id="@+id/btn_ajout_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_ajout_user" />
 
         <Button
-            android:id="@+id/btn_check_qualite"
+            android:id="@+id/btn_ajout_zone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_ajout_zone" />
 
         <Button
-            android:id="@+id/btn_traca"
+            android:id="@+id/btn_ajout_machine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_ajout_machine" />

@@ -143,7 +143,7 @@ public class ZoneListActivity
 			final Intent intent = new Intent(this, MachineListActivity.class);
 			final Zone item = (Zone) l.getItemAtPosition(position);
 			
-			//Enregistrement de la zonedans les prefs
+			//Enregistrement de la zone dans les prefs
 			SharedPreferences prefs = PreferenceManager
 					.getDefaultSharedPreferences(ZoneListActivity.this);
 			Editor edit = prefs.edit();

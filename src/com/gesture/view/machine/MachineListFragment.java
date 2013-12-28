@@ -39,8 +39,7 @@ import com.gesture.entity.Machine;
  * @see android.app.Fragment
  */
 public class MachineListFragment
-		extends HarmonyListFragment<Machine>
-		implements CrudCreateMenuInterface {
+		extends HarmonyListFragment<Machine>{
 
 	/** The adapter which handles list population. */
 	protected MachineListAdapter mAdapter;
@@ -156,12 +155,4 @@ public class MachineListFragment
 		// Clear the data in the adapter.
 		this.mAdapter.clear();
 	}
-
-	@Override
-	public void onClickAdd() {
-		Intent intent = new Intent(this.getActivity(),
-					MachineCreateActivity.class);
-		this.startActivity(intent);
-	}
-
 }

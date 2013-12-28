@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:harmony="http://schemas.android.com/apk/res/com.gesture"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:contentDescription="@string/desc_img_deco"
+        android:src="@drawable/deconnexion" />
+
     <TextView
-    	android:id="@+id/client_nom_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/client_nom_label"/>
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/btn_create_cmd"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/darkred"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/client_nom_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/client_nom_label" />
+
     <EditText
-		android:id="@+id/client_nom"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:inputType="text"
-		android:layout_below="@+id/client_nom_label" />
-</RelativeLayout>
+        android:id="@+id/client_nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+
+</LinearLayout>

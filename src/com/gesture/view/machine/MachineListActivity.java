@@ -14,11 +14,17 @@ import com.gesture.R;
 
 import com.gesture.harmony.view.HarmonyFragmentActivity;
 import com.gesture.harmony.view.HarmonyListFragment;
+import com.gesture.view.appview.GestionPieceActivity;
+import com.gesture.view.zone.ZoneListActivity;
 import com.google.android.pinnedheader.util.ComponentUtils;
 import com.gesture.entity.Machine;
+import com.gesture.entity.Zone;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ListView;
 
@@ -101,10 +107,18 @@ public class MachineListActivity
 		if (this.isDualMode()) {
 			this.selectListItem(this.lastSelectedItemPosition);
 		} else {
-			final Intent intent = new Intent(this, MachineShowActivity.class);
+			//Affichage de l'écran de gestion pièce
+			final Intent intent = new Intent(this, GestionPieceActivity.class);
 			final Machine item = (Machine) l.getItemAtPosition(position);
+			//Enregistrement de la machine dans les prefs
+			SharedPreferences prefs = PreferenceManager
+					.getDefaultSharedPreferences(MachineListActivity.this);
+			Editor edit = prefs.edit();
+			edit.putInt("idMachineChoisie", item.getId_machine());
+			edit.commit();
+			
 			Bundle extras = new Bundle();
-			extras.putParcelable(Machine.PARCEL, item);
+			extras.putParcelable(Zone.PARCEL, item);
 			intent.putExtras(extras);
 			this.startActivity(intent);
 		}
