@@ -1,6 +1,17 @@
 User:
-#   User_name:
-#      id_user:
-#      login:
-#      password:
-#      role:
+    User_name1:
+        login: "anais"
+        password: "pass"
+        role: 0
+    User_name2:
+        login: "antoine"
+        password: "pass"
+        role: 1
+    User_name3:
+        login: "adminqual"
+        password: "pass"
+        role: 2
+    User_name4:
+        login: "adminlogiciel"
+        password: "pass"
+        role: 3
