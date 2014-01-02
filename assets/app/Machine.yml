@@ -1,6 +1,13 @@
 Machine:
-#   Machine_name:
-#      id_machine:
-#      nom:
-#      zone:
-#      LogTracas:
+    Machine_name1:
+        nom: "Découpeuse"
+        zone: Zone_name1
+    Machine_name1:
+        nom: "Façonneuse"
+        zone: Zone_name2
+     Machine_name1:
+        nom: "Robot peinture"
+        zone: Zone_name3
+    Machine_name1:
+        nom: "Robot assembleur"
+        zone: Zone_name4

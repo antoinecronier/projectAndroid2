@@ -76,9 +76,7 @@ public class GestionPieceActivity extends Activity {
 	Produit currentProduit;
 	Commande currentCommande;
 	LiaisonAutomate automate;
-
-	SharedPreferences prefs = PreferenceManager
-			.getDefaultSharedPreferences(GestionPieceActivity.this);
+	SharedPreferences prefs;
 
 	AlertDialog.Builder builder;
 
@@ -86,6 +84,9 @@ public class GestionPieceActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		prefs = PreferenceManager
+				.getDefaultSharedPreferences(GestionPieceActivity.this);
+		
 		/* Init object */
 		userForInstance = new User();
 		currentLog = new LogTraca();

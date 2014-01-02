@@ -10,6 +10,7 @@
  **************************************************************************/
 package com.gesture.view.commande;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -44,6 +45,7 @@ import com.gesture.harmony.widget.SingleEntityWidget;
 import com.gesture.menu.SaveMenuWrapper.SaveMenuInterface;
 import com.gesture.provider.utils.ClientProviderUtils;
 import com.gesture.provider.utils.CommandeProviderUtils;
+import com.gesture.provider.utils.ProduitProviderUtils;
 
 /**
  * Commande create fragment.
@@ -109,7 +111,7 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 	}
 
 	/** Save data from fields view to model. */
-	public void saveData() {
+	public void saveData(Context ctx) {
 
 		Date currentDate = new Date();
 		
@@ -121,15 +123,26 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		String typeProduit = this.spinProduit.getSelectedItem().toString();
 		String matierProduit = this.spinMatiere.getSelectedItem().toString();
 		int quantite = Integer.parseInt(this.edtQuantite.getText().toString());
-		
+		int i = quantite;
 		ArrayList<Produit> listPdt = new ArrayList<Produit>();
 		
 		do{
+			//enregistrement pdt en bdd et récupération id
 			Produit pdt = new Produit();
-			//TODO creation des produits, et enregistrement en bdd
+			pdt.setMateriel(ProduitMateriel.fromValue(matierProduit));
+			pdt.setType(ProduitType.fromValue(typeProduit));
+			pdt.setQuantite(quantite);
+			
+			Uri result = null;
+			ProduitProviderUtils ppu = new ProduitProviderUtils(ctx);
+			
+			result = ppu.insert(pdt);
+			
+			pdt.setId_produit(Integer.parseInt(result.toString()));
+			
 			listPdt.add(pdt);
-			quantite--;
-		}while(quantite==1);
+			i--;
+		}while(i==1);
 		
 		this.model.setProduits(listPdt);
 	}
@@ -205,8 +218,8 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		@Override
 		protected Uri doInBackground(Void... params) {
 			Uri result = null;
-
-			result = new CommandeProviderUtils(this.ctx).insert(this.entity);
+			CommandeProviderUtils test = new CommandeProviderUtils(this.ctx);
+			result = test.insert(this.entity);
 
 			return result;
 		}
@@ -295,7 +308,7 @@ public class CommandeCreateFragment extends HarmonyFragment implements
 		
 		if (view == btnCreateCmd) {
 			//TODO enregistrement de la commande
-			this.saveData();
+			this.saveData(this.getActivity());
 			new CreateTask(this, this.model).execute();
 			//TODO création des produits selon la quantité
 			//Redirection écran de paramètrage tracabilité

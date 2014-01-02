@@ -1,8 +1,4 @@
 User:
-    User_name1:
-        login: "anais"
-        password: "pass"
-        role: 0
     User_name2:
         login: "antoine"
         password: "pass"

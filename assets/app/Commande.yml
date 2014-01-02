@@ -1,9 +1,13 @@
 Commande:
-#   Commande_name:
-#      id_cmd:
-#      client:
-#      dateCreation:
-#      dateFin:
-#      dateLivraison:
-#      avancement:
-#      produits:
+    Tact1:
+        client: Client_name1
+        dateCreation: "02/01/2014"
+        avancement: 0
+    Tact2:
+        client: Client_name1
+        dateCreation: "02/01/2014"
+        avancement: 0
+    Imie1:
+        client: Client_name2
+        dateCreation: "02/01/2014"
+        avancement: 0

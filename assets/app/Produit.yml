@@ -1,9 +1,22 @@
 Produit:
-#   Produit_name:
-#      id_produit:
-#      type:
-#      etat:
-#      materiel:
-#      commande:
-#      quantite:
-#      avancement:
+    Produit_name1:
+        type: porte
+        etat: standby
+        materiel: aluminium
+        commande: Tact1
+        quantite: 10
+        avancement: 0
+    Produit_name2:
+        type: porte
+        etat: standby
+        materiel: acier
+        commande: Tact2
+        quantite: 2
+        avancement: 0
+    Produit_name3:
+        type: fenetre
+        etat: standby
+        materiel: aluminium
+        commande: Imie1
+        quantite: 50
+        avancement: 0

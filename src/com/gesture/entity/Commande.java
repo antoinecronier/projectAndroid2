@@ -29,6 +29,12 @@ import android.database.sqlite.SQLiteDatabase;
 @Entity
 public class Commande  implements Serializable , Parcelable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	/** Key Constant for parcelable/serialization. */
 	public static final String PARCEL = 
 			"Commande";

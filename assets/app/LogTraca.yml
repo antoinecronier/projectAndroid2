@@ -1,9 +1,8 @@
 LogTraca:
-#   LogTraca_name:
-#      id_log:
-#      produit:
-#      machine:
-#      user:
-#      duree:
-#      dateEntre:
-#      dateSortie:
+    LogTraca_name1:
+        produit: Produit_name1
+        machine: Machine_name1
+        user: User_name2
+        duree: 10
+        dateEntre: "02/01/2014"
+        dateSortie: "02/01/2014"

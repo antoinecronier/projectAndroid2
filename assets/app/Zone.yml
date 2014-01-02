@@ -1,4 +1,9 @@
 Zone:
-#   Zone_name:
-#      id_zone:
-#      nom:
+    Zone_name1:
+        nom: "Découpage"
+    Zone_name2:
+        nom: "Façonnage"
+    Zone_name3:
+        nom: "Peinture"
+    Zone_name4:
+        nom: "Assemblage"
